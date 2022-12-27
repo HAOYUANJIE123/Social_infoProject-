@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应急资源社会化共享服务平台</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <style>
+        /* 背景图 */
+        body {
+            background-image: url("../static/images/reg_bg_min.jpg");
+            /* 固定body的背景 */
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* 百度logo */
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin-top: 60px;
+            margin-left: 70px;
+        }
+
+        .logo img {
+            width: 125px;
+
+        }
+
+        /* 文字 */
+        .text1 {
+            width: 200px;
+            height: 50px;
+            color: #fff;
+            margin-top: 60px;
+            margin-left: 200px;
+            font-size: 50px;
+            font-weight: bold;
+
+        }
+
+        .text2 {
+            width: 320px;
+            height: 40px;
+            color: #fff;
+            margin-top: 10px;
+            margin-left: 200px;
+            font-size: 30px;
+            letter-spacing: 5px;
+
+
+        }
+
+        /* 底部文字 */
+        .text3 {
+            width: 80px;
+            height: 15px;
+            margin-left: 70px;
+            margin-top: 440px;
+            color: #BFC2CA;
+            font-size: 14px;
+            float: left;
+        }
+
+        .text4 {
+            width: 80px;
+            height: 15px;
+            margin-left: 10px;
+            margin-top: 440px;
+
+            float: left;
+        }
+
+        .text4 img {
+            width: 15px;
+        }
+
+        .text5 {
+            width: 80px;
+            height: 15px;
+            margin-left: -30px;
+            margin-top: 445px;
+            color: #BFC2CA;
+            font-size: 12px;
+            float: left;
+        }
+
+        /* 表单 */
+        #form-info {
+            width: 480px;
+            height:1250px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            margin: auto;
+            top: 0px;
+            bottom: 0px;
+            right: 140px;
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+
+        /* 欢迎注册 */
+        #register {
+            width: 480px;
+            height: 50px;
+            margin-left: 30px;
+            margin-top: 55px;
+            font-size: 36px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* 已有账号 */
+        #old-account {
+            width: 480px;
+            height: 20px;
+            font-size: 14px;
+            color: #9B9B9B;
+            float: left;
+            margin-left: 40px;
+
+        }
+
+        /* 登录 */
+
+        #login {
+            color: #2e58ff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* 输入框 */
+        .input {
+            height: 40px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #E0E0E0;
+            background-color: #fff;
+
+        }
+
+<!--        select {-->
+<!--            width: 340px;-->
+<!--            height: 40px;-->
+<!--            margin-bottom: 15px;-->
+<!--            border-radius: 4px;-->
+<!--            border: 1px solid #E0E0E0;-->
+<!--            background-color: #fff;-->
+
+<!--        }-->
+
+        .input1 {
+            width: 340px;
+            margin-left: -5px;
+        }
+
+        .input2 {
+            width: 205px;
+        }
+
+        .input3 {
+            width: 120px;
+            cursor: pointer;
+
+        }
+
+
+
+        /* 表单内容样式 */
+        .form {
+            width: 480px;
+            height: 40px;
+            margin-left: 40px;
+        }
+
+        .form1 {
+            margin-top: 30px;
+        }
+
+        .form2 {
+            margin-top: 20px;
+
+
+
+        }
+
+
+
+        /* 字体 */
+        label {
+            width: 58px;
+            /* 转换为块元素 */
+            display: inline-block;
+            font-size: 14px;
+            color: #333;
+            font-weight: 200;
+        }
+
+        .label-psw {
+            letter-spacing: 15px;
+        }
+
+        .gth {
+            width: 15px;
+            height: 20px;
+            position: absolute;
+            margin-left: 370px;
+            margin-top: -45px;
+
+        }
+
+        .gth img {
+            width: 100%;
+        }
+
+        /* 注册按钮 */
+        .register {
+            width: 400px;
+            height: 50px;
+            background: #BDCEFC;
+            border-radius: 25px;
+            border: rgba(255, 255, 255, 0.5) 1px solid;
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+
+        }
+
+        .read {
+            width: 330px;
+            height: 10px;
+            margin-left: 80px;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+
+        }
+
+        /* input内文字颜色 */
+        input::-webkit-input-placeholder {
+            color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="logo">
+    <img src="../static/images/logo-.png" alt="">
+</div>
+
+
+<div class="text1">应急资源</div>
+<div class="text2">社会化共享服务平台</div>
+
+
+<div id="form-info">
+
+    <form action="#" method="POST">
+
+        <div id="register">欢迎公司注册</div>
+        <div id="old-account">已有帐号？
+            <a id="login" href="http://127.0.0.1:5000/">登陆</a>
+        </div>
+
+
+        <div class=" form form1">
+            <label >企业名称</label>
+            <input type="text" name="company_name" id="company_name"
+                   placeholder="&nbsp;&nbsp;&nbsp;请输入企业名称" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label  for="person_name" class="">法定代表</label>
+            <input  type="text" name="person_name" id="person_name"
+                   placeholder="&nbsp;&nbsp;&nbsp;请输入法定代表" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label for="money" class="">注册资本</label>
+            <input type="text" name="money" id="money" placeholder="&nbsp;&nbsp;&nbsp;请输入注册资本" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label for="data" class="">成立日期</label>
+            <input type="text" name="data" id="data" placeholder="&nbsp;&nbsp;&nbsp;请输入成立日期" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label class="">经营状态</label>
+            <input type="text" name="state" id="state" placeholder="&nbsp;&nbsp;&nbsp;请输入经营状态" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label class="">公司类型</label>
+            <input type="text" name="company_cls" id="company_cls" placeholder="&nbsp;&nbsp;&nbsp;请输入公司类型"
+                   class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label >信用代码</label>
+            <input type="text" name="xym" id="xym" placeholder="&nbsp;&nbsp;&nbsp;请输入统一社会信用代码" class="input input1">
+        </div>
+
+
+        <div class="form form2">
+            <label>行业类别</label>
+            <select class="dept_select" name="industry" id="industry" style="width: 340px; height: 40px;border: none;">
+                <option value="纺织服装、服饰业">纺织服装、服饰业</option>
+                <option value="食品制造业">食品制造业</option>
+                <option value="医药制造业">医药制造业</option>
+                <option value="卫生">卫生</option>
+                <option value="纺织业">纺织业</option>
+                <option value="零售业">零售业</option>
+                <option value="批发业">批发业</option>
+                <option value="土木工程建筑业">土木工程建筑业</option>
+                <option value="房屋建筑业">房屋建筑业</option>
+                <option value="建筑装饰、装修和其他建筑业">建筑装饰、装修和其他建筑业</option>
+                <option value="建筑安装业">建筑安装业</option>
+                <option value="农副食品加工业">农副食品加工业</option>
+                <option value="金属制造业">金属制造业</option>
+                <option value="汽车制造业">汽车制造业</option>
+                <option value="酒、饮料和精制茶制造业">酒、饮料和精制茶制造业</option>
+                <option value="畜牧业">畜牧业</option>
+                <option value="租赁业">租赁业</option>
+                <option value="道路运输业">道路运输业</option>
+                <option value="行业类别" selected="selected">行业类别</option>
+            </select>
+        </div>
+
+        <div class="form form2">
+            <label>物资类别</label>
+            <select class="dept_select" name="goodstype" id="goodstype"
+                    style="width: 340px; height: 40px;border: none;">
+                <option value="救生防护衣物">救生防护衣物</option>
+                <option value="饮用水">饮用水</option>
+                <option value="应急食品">应急食品</option>
+                <option value="医药物资">医药物资</option>
+                <option value="医疗防护">医疗防护</option>
+                <option value="户外纺织用品">户外纺织用品</option>
+                <option value="小型救援工具">小型救援工具</option>
+                <option value="土木相关">土木相关</option>
+                <option value="临时板房">临时板房</option>
+                <option value="农副食品">农副食品</option>
+                <option value="五金设备">五金设备</option>
+                <option value="汽车零件">汽车零件</option>
+                <option value="肉类产品">肉类产品</option>
+                <option value="运输车">运输车</option>
+                <option value="企业可提供物资" selected="selected">物资类别</option>
+            </select>
+        </div>
+
+        <div class=" form form2">
+            <label>所属省份</label>
+            <input type="text" name="province" id="province" placeholder="&nbsp;&nbsp;&nbsp;请输入所属省份"
+                   class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label>所属城市</label>
+            <input type="text" id="city" placeholder="&nbsp;&nbsp;&nbsp;请输入所属城市" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label class="label-psw">地址</label>
+            <input type="text" name="address" id="address" placeholder="&nbsp;&nbsp;&nbsp;请输入地址" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label  >经纬度</label>
+            <input type="text" name="lng_lon" id="lng_lon" placeholder="&nbsp;&nbsp;&nbsp;请输入经纬度" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label>联系电话</label>
+            <input type="tel" name="phone" id="phone" placeholder="&nbsp;&nbsp;&nbsp;请输入联系电话" class="input input1">
+        </div>
+
+        <div class=" form form2">
+            <label class="label-psw">邮箱</label>
+            <input type="email" name="email" id="email" placeholder="&nbsp;&nbsp;&nbsp;请输入邮箱" class="input input1">
+        </div>
+
+
+        <div class="form form2">
+            <label class="label-psw">密码</label>
+            <input type="password" name="password" id="user_password" placeholder="&nbsp;&nbsp;&nbsp;请输入密码"
+                   class=" input input1">
+            <div class="gth">
+                <img src="../static/images/download (1).png" alt="">
+            </div>
+        </div>
+
+
+        <div id="register1">
+            <input class="register" type="button" value="注册" onclick=registered_company() style="margin-left: 40px; "/>
+        </div>
+
+        <div class="read">
+            <input type="checkbox" name="read" id="read" class="read1">阅读并接受
+            <a href="#">《用户协议》</a>及<a href="#">《隐私权保护声明》</a>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/comprehensive.js"></script>
+<script>
+  registered_company = function(){
+      debugger;
+      var company_name = document.getElementById("company_name").value
+      var person_name = document.getElementById("person_name").value
+      var money = document.getElementById("money").value
+      var data = document.getElementById("data").value
+      var state = document.getElementById("state").value
+      var province = document.getElementById("province").value
+      var city = document.getElementById("city").value
+      var company_cls = document.getElementById("company_cls").value
+      var xym = document.getElementById("xym").value
+      var phone = document.getElementById("phone").value
+
+      var industry_obj = document.getElementById('industry');
+      var industry_index = industry_obj.selectedIndex;
+      var industry = industry_obj[industry_index].value;
+
+      var goodstype_obj = document.getElementById('goodstype');
+      var goodstype_index = goodstype_obj.selectedIndex;
+      var goodstype = goodstype_obj[goodstype_index].value;
+
+      var address = document.getElementById("address").value
+      var lng_lon = document.getElementById("lng_lon").value
+      var email = document.getElementById("email").value
+      var user_password =document.getElementById("user_password").value
+      $.ajax({
+              url: "http://127.0.0.1:5000/registered_company",
+              method: "POST",
+              data: {"company_name":company_name,
+                     "person_name":person_name,
+                     "money":money,
+                     "data":data,
+                     "state":state,
+                     "province":province,
+                     "city":city,
+                     "company_cls":company_cls,
+                     "xym":xym,
+                     "phone":phone,
+                     "industry":industry,
+                     "goodstype":goodstype,
+                     "address":address,
+                     "lng_lon":lng_lon,
+                     "email":email,
+                     "user_password":user_password
+                    }
+              })
+              .then(function(res)
+                  {
+                    alert(res.results)
+                  }
+             )
+      }
+</script>
+</html>

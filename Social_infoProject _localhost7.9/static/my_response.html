@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>可申请的需求任务</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comprehensive.css">
+    <link rel="stylesheet" href="css/table.css">
+
+</head>
+<body onload="init()">
+
+<div class="comprehensive" >
+
+    <h2 >申请需求任务</h2>
+
+    <div class="comprehensive-query"  >
+
+
+
+
+
+        <div class="query-item">
+            <div class="query-left">
+                         <div class="query-item">
+            <div class="query-left">
+                <button onclick="selectForme()" style="background-color:#6683b2; width: 140px;">查询可申请的任务</button>
+            </div>
+            <div class="query-right">
+                <button onclick="haveapply_selectForme()" style="background-color:#6683b2; width: 140px;">查询已申请的任务</button>
+            </div>
+        </div>
+
+            </div>
+            <div class="query-right">
+                <div class="query-item">
+            <div class="query-left">
+                 <button onclick="clearRoute()" style="background-color:#6683b2; width: 140px;">清除路线</button>
+            </div>
+            <div class="query-right">
+                <button onclick="ClearselectForme()" style="background-color:#6683b2; width: 140px;">清空查询</button>
+            </div>
+        </div>
+            </div>
+        </div>
+
+
+
+        <div class="query-item" style="height: 150px;overflow: scroll;" >
+            <table id="goodsreqireTable" border="1" class="commonTable"  style="border:3px solid #6699CC;" >
+                <tr style="background-color:#0099CC; ">
+                    <th>需求名称</th>
+                    <th>详细介绍</th>
+                    <th>需求物资</th>
+                    <th>需求数量</th>
+<!--                    <th>操作</th>-->
+                </tr>
+            </table>
+        </div>
+        <h2>待执行任务</h2>
+
+         <div class="query-item">
+         </div>
+         <div class="query-item">
+            <div class="query-left">
+                 <button onclick="needtodo_selectForme()" style="background-color:#6683b2; width: 300px;">查询要执行的任务</button>
+            </div>
+            <div class="query-right">
+                <button onclick="Clear_needtodo_selectForme()" style="background-color:#6683b2; width: 300px;">清空查询</button>
+            </div>
+        </div>
+
+
+
+
+        <div class="query-item"  style="height: 150px;overflow: scroll;">
+            <table id="needtodo_goodsreqireTable" border="1" class="commonTable" style="border:3px solid #6699CC;">
+                <tr style="background-color:#0099CC; ">
+                    <th>需求名称</th>
+                    <th>详细介绍</th>
+                    <th>需求物资</th>
+                    <th>物资数量</th>
+                    <th>发布人</th>
+                    <th>发布人邮箱</th>
+                    <th>协议签名</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/comprehensive.js"></script>
+<script>
+    var userID1='';
+    function getuserID(){
+            var callback = function (p){
+                userID1=p;
+                };
+                parent.FunctionC.getuserID(callback)
+    }
+    //进行任务申请部分**********************************************************************************************
+    var inittablehtml1=document.getElementById("goodsreqireTable").innerHTML
+    //加载可以申请的结果到表1中
+    function selectForme(){
+                getuserID()
+                let userID=userID1
+                $.ajax({
+                    url: "http://47.97.117.208:5000/selectForme",
+                    method: "POST",
+                    data: {"userID":userID},
+                }).then(function (res){
+                    var disasterNamelist=res.disasterName
+                    var disasterDescriptionlist=res.disasterDescription
+                    var goodstypelist=res.goodstype
+                    var goodsNumlist=res.goodsNum
+                    var a=0
+                    for (var i=0;i<disasterNamelist.length;i++){
+                        AddRow2Table(a,disasterNamelist[i],disasterDescriptionlist[i],goodstypelist[i],goodsNumlist[i])
+                    }
+                })
+    }
+
+    function haveapply_selectForme(){
+                getuserID()
+                let userID=userID1
+                $.ajax({
+                    url: "http://47.97.117.208:5000/haveapply_selectForme",
+                    method: "POST",
+                    data: {"userID":userID},
+                }).then(function (res){
+                    var disasterNamelist=res.disasterName
+                    var disasterDescriptionlist=res.disasterDescription
+                    var goodstypelist=res.goodstype
+                    var goodsNumlist=res.goodsNum
+                    var a=1
+                    for (var i=0;i<disasterNamelist.length;i++){
+                        AddRow2Table(a,disasterNamelist[i],disasterDescriptionlist[i],goodstypelist[i],goodsNumlist[i])
+                    }
+                })
+    }
+
+
+    function AddRow2Table(a,disasterName,disasterDescription,goodstype,goodsNum){
+        if (a==1){
+            var tabObj=document.getElementById("goodsreqireTable");
+            tabObj.innerHTML+='<tr style="font-size:10px;text-align:center;vertical-align:middle;" ><td>'+disasterName+
+            '</td><td>'+disasterDescription+'</td><td>'+goodstype+'</td><td>'+goodsNum+
+            '</td><td>'+'<button onclick=twoPointRoad('+"'"+disasterName+"'"+') style="background-color:#009999; width: 50px;height: 30px;">路线</button>'+'</td></tr>';
+        }
+        else {
+            var tabObj=document.getElementById("goodsreqireTable");
+            tabObj.innerHTML+='<tr style="font-size:10px;text-align:center;vertical-align:middle;"><td>'+disasterName+
+            '</td><td style="font-size:10px;text-align:center;vertical-align:middle;">'+disasterDescription+'</td><td>'+goodstype+'</td><td>'+goodsNum+
+            '</td><td>'+'<button onclick=apply('+"'"+disasterName+"'"+') style="background-color:#009999; width: 50px;height: 30px;">申请</button>'+
+            '</td><td>'+'<button onclick=twoPointRoad('+"'"+disasterName+"'"+') style="background-color:#009999; width: 50px;height: 30px;">路线</button>'+'</td></tr>';
+        }
+
+
+    }
+    function ClearselectForme(){
+        document.getElementById("goodsreqireTable").innerHTML=inittablehtml1
+    }
+
+    //表1中申请按钮的函数
+    function apply(disasterName){
+                getuserID()
+                let userID=userID1
+                var disasterName1=disasterName
+                $.ajax({
+                    url: "http://47.97.117.208:5000/applyrequireTask",
+                    method: "POST",
+                    data: {"userID":userID,"disasterName":disasterName1},
+                }).then(function (res){
+                    alert('申请成功！')
+                })
+    }
+        //表1中申请按钮的函数
+    var jiuyuanPos;
+    var companyPos;
+    function twoPointRoad(disasterName){
+                getuserID()
+                let userID=userID1
+                var disasterName1=disasterName
+                $.ajax({
+                    url: "http://47.97.117.208:5000/twoPointRoad",
+                    method: "POST",
+                    data: {"userID":userID,"disasterName":disasterName1},
+                }).then(function (res){
+
+                    companyPos=res.companyPos
+                    jiuyuanPos=res.jiuyuanPos
+                    drawtwoPointRoad()
+
+                })
+    }
+    //绘制两点路线
+    function drawtwoPointRoad(){
+       var callback = function (p){
+        };
+        clearRoute()
+        parent.FunctionC.draw_twoPointroad(companyPos,jiuyuanPos,callback)
+
+    }
+    function clearRoute(){
+        parent.FunctionC.clearall()
+
+    }
+    //查询已经被安排的任务列表**********************************************************************************************
+        var inittablehtml=document.getElementById("needtodo_goodsreqireTable").innerHTML
+    //加载可以申请的结果到表1中
+    function needtodo_selectForme(){
+                getuserID()
+                let userID=userID1
+                $.ajax({
+                    url: "http://47.97.117.208:5000/needtodo_selectForme",
+                    method: "POST",
+                    data: {"userID":userID},
+                }).then(function (res){
+                    var disasterNamelist=res.disasterName
+                    var disasterDescriptionlist=res.disasterDescription
+                    var goodstypelist=res.goodstype
+                    var goodsNumlist=res.goodsNum
+                    var requiremanlist=res.requireman
+                    var requiremanEmaillist=res.requiremanEmail
+                    var signAgreementlist=res.signAgreement
+                    for (var i=0;i<disasterNamelist.length;i++){
+                        AddRow2Table1(disasterNamelist[i],disasterDescriptionlist[i],goodstypelist[i],goodsNumlist[i],requiremanlist[i],requiremanEmaillist[i],signAgreementlist[i])
+                    }
+                })
+    }
+
+    function AddRow2Table1(disasterName,disasterDescription,goodstype,goodsNum,requireman,requiremanEmail,signAgreement){
+        var tabObj=document.getElementById("needtodo_goodsreqireTable");
+        tabObj.innerHTML+='<tr><td>'+disasterName+
+            '</td><td>'+disasterDescription+'</td><td>'+goodstype+'</td><td>'+goodsNum+
+            '</td><td>'+requireman+'</td><td>'+requiremanEmail+'</td><td>'+signAgreement+'</td><td>'+'<button onclick=signAgreement('+"'"+disasterName+"'"+') style="background-color:#009999; width: 50px;height: 30px;">签订</button>'+'</td></tr>';
+    }
+
+    function signAgreement(disasterName){
+                getuserID()
+                let userID=userID1
+                var disasterName1=disasterName
+                $.ajax({
+                    url: "http://47.97.117.208:5000/signAgreement",
+                    method: "POST",
+                    data: {"userID":userID,"disasterName":disasterName1},
+                }).then(function (res){
+                    alert('请预览合同！')
+                    window.open("http://47.97.117.208:5000/static/Agreement/SecondnewAgreement.pdf")
+                   // alert('签订成功！')
+                })
+
+
+    }
+
+    function Clear_needtodo_selectForme(){
+        document.getElementById("needtodo_goodsreqireTable").innerHTML=inittablehtml
+    }
+
+
+
+
+
+
+</script>
+</html>

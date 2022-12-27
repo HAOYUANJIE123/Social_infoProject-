@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>应急资源社会化共享服务平台</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <style>
+        /* 背景图 */
+        body {
+            background-image: url("../static/images/reg_bg_min.jpg");
+            /* 固定body的背景 */
+            background-attachment: fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 百度logo */
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin-top: 60px;
+            margin-left: 70px;
+        }
+
+        .logo img {
+            width: 125px;
+
+        }
+
+        /* 文字 */
+        .text1 {
+            width: 200px;
+            height: 50px;
+            color: #fff;
+            margin-top: 60px;
+            margin-left: 200px;
+            font-size: 50px;
+            font-weight: bold;
+
+        }
+
+        .text2 {
+            width: 320px;
+            height: 40px;
+            color: #fff;
+            margin-top: 10px;
+            margin-left: 200px;
+            font-size: 30px;
+            letter-spacing: 5px;
+
+
+        }
+
+        /* 底部文字 */
+        .text3 {
+            width: 80px;
+            height: 15px;
+            margin-left: 70px;
+            margin-top: 440px;
+            color: #BFC2CA;
+            font-size: 14px;
+            float: left;
+        }
+
+        .text4 {
+            width: 80px;
+            height: 15px;
+            margin-left: 10px;
+            margin-top: 440px;
+
+            float: left;
+        }
+
+        .text4 img {
+            width: 15px;
+        }
+
+        .text5 {
+            width: 80px;
+            height: 15px;
+            margin-left: -30px;
+            margin-top: 445px;
+            color: #BFC2CA;
+            font-size: 12px;
+            float: left;
+        }
+
+
+        /* 表单 */
+        #form-info {
+            width: 480px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: absolute;
+            margin: auto;
+            top: 0px;
+            bottom: 0px;
+            right: 140px;
+        }
+
+        /* 欢迎注册 */
+        #register {
+            width: 480px;
+            height: 50px;
+            margin-left: 30px;
+            margin-top: 55px;
+            font-size: 36px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* 已有账号 */
+        #old-account {
+            width: 480px;
+            height: 20px;
+            font-size: 14px;
+            color: #9B9B9B;
+            float: left;
+            margin-left: 40px;
+
+        }
+
+        /* 登录 */
+
+        #login {
+            color: #2e58ff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* 输入框 */
+        .input {
+            height: 40px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #E0E0E0;
+            background-color: #fff;
+
+        }
+
+
+        .input1 {
+            width: 340px;
+            margin-left: -5px;
+        }
+
+        .input2 {
+            width: 205px;
+        }
+
+        .input3 {
+            width: 120px;
+            cursor: pointer;
+
+        }
+
+
+
+        /* 表单内容样式 */
+        .form {
+            width: 480px;
+            height: 40px;
+            margin-left: 40px;
+
+
+
+        }
+
+        .form1 {
+            margin-top: 60px;
+        }
+
+        .form2 {
+            margin-top: 50px;
+
+        }
+
+
+        /* 字体 */
+        label {
+            width: 58px;
+            /* 转换为块元素 */
+            display: inline-block;
+            font-size: 14px;
+            color: #333;
+            font-weight: 200;
+        }
+
+        .label-psw {
+            letter-spacing: 15px;
+        }
+
+        .gth {
+            width: 15px;
+            height: 20px;
+            position: absolute;
+            margin-left: 370px;
+            margin-top: -45px;
+
+        }
+
+        .gth img {
+            width: 100%;
+        }
+
+        /* 注册按钮 */
+        .register {
+            width: 400px;
+            height: 50px;
+            background: #BDCEFC;
+            border-radius: 25px;
+            border: rgba(255, 255, 255, 0.5) 1px solid;
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+
+        }
+
+        .read {
+            width: 330px;
+            height: 10px;
+            margin-left: 80px;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+
+        }
+
+        /* input内文字颜色 */
+        input::-webkit-input-placeholder {
+            color: #ccc;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="logo">
+    <img src="../static/images/logo-.png" alt="">
+</div>
+
+<div class="text1">应急资源</div>
+<div class="text2">社会化共享服务平台</div>
+
+<div id="form-info">
+    <form method="post" action="http://127.0.0.1:5000/login">
+
+        <div id="register">欢迎登陆</div>
+
+        <div id="old-account">没有帐号？
+            <a href="#" id="login" onclick=registered()>注册</a>
+        </div>
+
+
+        <div class=" form form1">
+            <label for="user_name">用户名</label>
+            <input type="text" name="user_name" id="user_name" placeholder="&nbsp;&nbsp;&nbsp;请输入用户名"
+                   class="input input1">
+        </div>
+
+
+        <div class="form form2">
+            <label for="user_password" class="label-psw">密码</label>
+            <input type="password" name="user_password" id="user_password" placeholder="&nbsp;&nbsp;&nbsp;请输入密码"
+                   class=" input input1">
+
+            <div class="gth">
+                <img src="../static/images/download (1).png" alt="">
+            </div>
+
+        </div>
+
+
+        <div class="form form2">
+            <label class="label-psw">身份</label>
+            <select class="dept_select" id="user_cls" name="user_cls" style="width: 340px; height: 40px;border: none;">
+                <option value="个人用户"> 应急资源需求方</option>
+                <option value="企业用户"> 应急资源供应方</option>
+            </select>
+        </div>
+
+        <div id="register1">
+            <input class="register" type="submit" value="登陆" style="margin-left: 40px;margin-top: 40px;">
+        </div>
+
+        <div class="read">
+            <input type="checkbox" name="read" id="read" class="read1">阅读并接受
+            <a href="#">《用户协议》</a>及<a href="#">《隐私权保护声明》</a>
+        </div>
+
+    </form>
+
+
+</div>
+
+</body>
+
+<script>
+    registered = function(){
+        debugger;
+        var obj = document.getElementById('user_cls'); //定位id
+        var index = obj.selectedIndex; // 选中索引
+        var user_cls = obj[index].value; // 选中文本
+        if (user_cls=='企业用户'){
+            window.location = "../static/registered_company.html"
+        }
+        else{
+            window.location = "../static/registered_person.html"
+        }
+    }
+
+</script>
+</html>

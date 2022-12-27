@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>综合查询</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comprehensive.css">
+
+</head>
+<body onload="init()">
+
+<div class="comprehensive">
+
+    <h2>属性查询</h2>
+
+    <div class="comprehensive-query">
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">城市选择</text>
+        </div>
+
+        <div class="query-item">
+            <input id="citytext" name="citytext" type="text" placeholder="请选择城市">
+        </div>
+
+        <div class="query-item">
+            <select id="cityselect" multiple="multiple" onclick="cityselectchange()" style="height:55px">
+                <option value="武汉市">武汉市</option>
+                <option value="合肥市">合肥市</option>
+                <option value="佛山市">佛山市</option>
+                <option value="宜昌市">宜昌市</option>
+                <option value="淮北市">淮北市</option>
+            </select>
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">产业选择</text>
+        </div>
+
+        <div class="query-item">
+            <input id="industrytext" name="industrytext" type="text" placeholder="请选择产业">
+        </div>
+
+        <div class="query-item">
+            <select id="industryselect" multiple="multiple" onclick="industryselectchange()" style="height:55px">
+                <option value="纺织服装、服饰业">纺织服装、服饰业</option>
+                <option value="食品制造业">食品制造业</option>
+                <option value="医药制造业">医药制造业</option>
+                <option value="卫生">卫生</option>
+                <option value="纺织业">纺织业</option>
+                <option value="零售业">零售业</option>
+                <option value="批发业">批发业</option>
+                <option value="土木工程建筑业">土木工程建筑业</option>
+                <option value="房屋建筑业">房屋建筑业</option>
+                <option value="建筑装饰、装修和其他建筑业">建筑装饰、装修和其他建筑业</option>
+                <option value="建筑安装业">建筑安装业</option>
+                <option value="农副食品加工业">农副食品加工业</option>
+                <option value="金属制造业">金属制造业</option>
+                <option value="汽车制造业">汽车制造业</option>
+                <option value="酒、饮料和精制茶制造业">酒、饮料和精制茶制造业</option>
+                <option value="畜牧业">畜牧业</option>
+                <option value="租赁业">租赁业</option>
+                <option value="道路运输业">道路运输业</option>
+            </select>
+        </div>
+
+        <div class="query-item">
+            <div class="query-left">
+                <button onclick="submit_attribute_query()" style="background-color:#6683b2; width: 150px;">属性查询提交</button>
+            </div>
+            <div class="query-right">
+
+                <button onclick="show_sqlresultAspoint()" style="background-color:#6683b2; width: 150px;">加载查询结果</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <h2>空间查询</h2>
+    <div class="comprehensive-query">
+
+        <div class="query-item">
+            <button onclick="drawRec()" style="background-color:#6683b2; width: 300px;">绘制矩形</button>
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">矩形经纬度</text>
+        </div>
+
+        <div class="query-item">
+            <input id="Rec_info" name="Rec_info" type="text" placeholder="矩形经纬度">
+        </div>
+
+        <div class="query-item">
+            <div class="query-left">
+                <button onclick="submit_spaital_query()" style="background-color:#6683b2; width: 150px;">矩形搜索</button>
+            </div>
+            <div class="query-right">
+                <button onclick="show_sqlresultAspoint()" style="background-color:#6683b2; width: 150px;">加载查询结果</button>
+            </div>
+        </div>
+        <div class="query-item">
+        <button onclick="clearall()" style="background-color:#6683b2; width: 300px;">清除覆盖</button>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/comprehensive.js"></script>
+<script>
+        //获取下拉列表中的数值，并传到后端
+    var citytext=[];
+    function cityselectchange() {
+        var obj = document.getElementById('cityselect'); //定位id
+        var index = obj.selectedIndex; // 选中索引
+        var value = obj[index].value; // 选中文本
+        var a = citytext.indexOf(value + ',');
+        if (a.toString() != '-1')
+        {
+            citytext = citytext.replace(value + ',', '');
+            document.getElementById("citytext").value = citytext;
+        }
+        else
+        {
+            citytext += value + ',';
+            document.getElementById("citytext").value = citytext;
+        }
+    }
+
+    var industrytext=[];
+    function industryselectchange() {
+        var obj = document.getElementById('industryselect'); //定位id
+        var index = obj.selectedIndex; // 选中索引
+        var value = obj[index].value; // 选中文本
+        var a=industrytext.indexOf(value+',');
+
+        if (a.toString()!='-1'){
+            industrytext=industrytext.replace(value+',','');
+            document.getElementById("industrytext").value=industrytext;
+        }
+        else {
+            industrytext+=value+',';
+            document.getElementById("industrytext").value=industrytext;
+        }
+
+    }
+    var sqlresult;
+    function submit_attribute_query(){
+
+                let form1 = document.createElement("form")
+                document.body.appendChild(form1);
+                let citytext = document.getElementById("citytext")
+                let industrytext = document.getElementById("industrytext")
+
+                $.ajax({
+                    url: "http://127.0.0.1:5000/attribute_query",
+                    method: "POST",
+                    data: {"citytext": citytext.value, "industrytext": industrytext.value},
+                }).then(function (res){
+
+                    sqlresult=res.results
+                    alert('查询结果: '+sqlresult.length.toString())
+
+                })
+
+    }
+    function submit_spaital_query(){
+
+                let Rec_info = document.getElementById("Rec_info")
+                $.ajax({
+                    url: "http://127.0.0.1:5000/spaital_query",
+                    method: "POST",
+                    data: {"Rec_info": Rec_info.value},
+                }).then(function (res){
+
+                    sqlresult=res.results
+                    alert('查询结果: '+sqlresult.length.toString())
+
+                })
+
+    }
+
+        //处理从后端传到前端的查询结果，存储在前端sqlresultTab，当表中值改变时触发以下函数并加载到地图中
+    function show_sqlresultAspoint(){
+            parent.FunctionC.PointF(sqlresult);
+    }
+
+
+
+    var count=1
+    function drawRec(){
+        var callback = function (p){
+            document.getElementById("Rec_info").value = p;
+
+        };
+        if(count%2==1){
+            parent.FunctionC.draw(count, callback)
+        } else {
+            parent.FunctionC.draw(count, callback)
+        }
+        count += 1
+    }
+    function clearall(){
+        parent.FunctionC.clearall()
+    }
+
+
+
+
+
+</script>
+</html>

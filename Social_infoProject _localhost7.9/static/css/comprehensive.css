@@ -1,0 +1,32 @@
+.comprehensive{margin-left: 8px}
+.comprehensive h2{background-color: #18407e;line-height: 44px;text-align: center;color: #fff;font-size: 2rem;font-weight: bold}
+.comprehensive-list>ul>li{border-bottom: #4c5f8a 1px solid;background-color: #0d2243;cursor: pointer}
+.comprehensive-item{padding: 4px}
+.comprehensive-item-content{position: relative}
+.item-header{display: flex;line-height: 20px;color: #cde6f3}
+.number{flex: 0 0 50px;text-align: center;background-color: #225776;margin-right: 4px;border-radius:50%}
+.text{flex: 1;background-color: #225776;margin-right: 4px;padding-left: 4px}
+.comprehensive-btn{flex: 0 0 70px;text-align: center;border-radius: 50%;}
+.green{background-color: #8a6d3b;color: #ffffff}
+.go{background-color: #e7120e;color: #e1ffff}
+.finish{background-color: #12a723;color: #e1ffff}
+.comprehensive-middle{display: flex;margin-top: 6px;font-size: 0.8em;line-height: 20px}
+.middle-left{flex: 0 0 58px;text-align: center;color: #cde6f3}
+.middle-right{flex: 1;color: #a7bedd}
+.urgent{position: absolute;right: 0;bottom: 0}
+.item-bottom-main{display: none}
+.item-bottom{display: flex;margin-top: 6px;background-color: #112950;padding: 6px}
+.item-bottom>div{flex: 1;color: #a4ccef;margin-right: 10px}
+.item-bottom>div span{display: block;border: 1px #324f7a solid;text-align: center;line-height: 23px;border-radius: 24px;cursor: pointer;margin: 0 auto}
+.item-bottom>div>span>a{display:inline-block;border: 1px #324f7a solid;color: #a4ccef !important;text-align: center;line-height: 23px;border-radius: 24px;cursor: pointer;margin: 0 auto}
+
+#comprehensive>div{display: none}
+.comprehensive-query{background-color: #081832;padding: 4px 4px 10px 4px;border-bottom: 1px #4c5f8a solid}
+.query-item{display: flex;margin-bottom: 4px}
+.query-left,.query-right{flex: 1}
+.query-left{margin-right: 4px}
+.query-item input,.query-item select{width: 100%;height:32px;background-color: transparent;padding-left: 6px;border: 1px #8198df solid;color: #6683b2;font-size: 1rem}
+.query-item input::-webkit-input-placeholder {color:#6683b2; }
+.query-btn{width: 100%;height: 42px;line-height: 38px;text-align: center;color: #f3ffff;cursor: pointer;font-size: 1.6rem;background-image: url("../images/btn.png");background-size: 100% 100%;background-repeat: no-repeat}
+
+

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路径规划</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comprehensive.css">
+
+</head>
+<body onload="init()">
+
+<div class="comprehensive">
+    <h2>路径规划</h2>
+
+    <div class="comprehensive-query">
+
+        <div class="query-item">
+            <button onclick="choose_jiuyuanPoint()" style="background-color:#6683b2; width: 300px;">选取救援点</button>
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">救援点位置</text>
+        </div>
+        <div class="query-item">
+            <input id="jiuyuanPos" name="jiuyuanPos" type="text" placeholder="救援点经纬度">
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">救援物资类型</text>
+        </div>
+
+        <div class="query-item">
+            <select id="goodstype" name="goodstype" multiple="multiple" style="height:120px">
+                <option value="救生防护衣物">救生防护衣物</option>
+                <option value="饮用水">饮用水</option>
+                <option value="应急食品">应急食品</option>
+                <option value="医药物资">医药物资</option>
+                <option value="医疗防护">医疗防护</option>
+                <option value="户外纺织用品">户外纺织用品</option>
+                <option value="小型救援工具">小型救援工具</option>
+                <option value="土木相关">土木相关</option>
+                <option value="临时板房">临时板房</option>
+                <option value="农副食品">农副食品</option>
+                <option value="五金设备">五金设备</option>
+                <option value="汽车零件">汽车零件</option>
+                <option value="肉类产品">肉类产品</option>
+                <option value="运输车">运输车</option>
+            </select>
+
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">物资数量</text>
+        </div>
+        <div class="query-item">
+            <input id="goodsNum" name="goodsNum" type="text" placeholder="物资数量">
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">调配公司数量</text>
+        </div>
+
+        <div class="query-item">
+            <input id="companyNum" name="companyNum" type="text" placeholder="调配公司数量">
+        </div>
+        <div class="query-item">
+            <button onclick="drawRec()" style="background-color:#6683b2; width: 300px;">绘制矩形</button>
+        </div>
+
+        <div class="query-item">
+            <text style="color: white; margin: auto;text-align: center;">矩形经纬度</text>
+        </div>
+
+        <div class="query-item">
+            <input id="Rec_info" name="Rec_info" type="text" placeholder="矩形经纬度">
+        </div>
+        <div class="query-item">
+            <button onclick="submit_findRoad_condition()" style="background-color:#6683b2; width: 300px;">查询条件提交</button>
+        </div>
+        <div class="query-item">
+            <button onclick="run()" style="background-color:#6683b2; width: 300px;">资源调配路径规划</button>
+        </div>
+
+        <div class="query-item">
+            <button onclick="clearall()" style="background-color:#6683b2; width: 300px;">清除覆盖</button>
+        </div>
+        <div class="query-item">
+            <button onclick="changeMap()" style="background-color:#6683b2; width: 300px;">切换</button>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/comprehensive.js"></script>
+<script>
+
+    var count3=1;
+    function changeMap(){
+                    var callback = function (p){
+
+        };
+        if (count3%2==1){
+            parent.FunctionC.changeMap(count3, callback)
+
+        }
+        else {
+            parent.FunctionC.changeMap(count3, callback)
+
+        }
+        count3 += 1;
+
+
+    }
+
+    var findRoadresult;
+
+    function submit_findRoad_condition(){
+
+                var obj = document.getElementById('goodstype'); //定位id
+                var index = obj.selectedIndex; // 选中索引
+                var goodstype = obj[index].value; // 选中文本
+                let jiuyuanPos=document.getElementById("jiuyuanPos")
+                let goodsNum=document.getElementById("goodsNum")
+                let companyNum=document.getElementById("companyNum")
+                let Rec_info = document.getElementById("Rec_info")
+                $.ajax({
+                    url: "http://127.0.0.1:5000/spaital_query1",
+                    method: "POST",
+                    data: {"goodstype":goodstype,"jiuyuanPos":jiuyuanPos.value,"goodsNum":goodsNum.value,"companyNum":companyNum.value, "Rec_info": Rec_info.value},
+                }).then(function (res){
+                    findRoadresult=res
+                    alert('点击资源调配路径规划按钮进行路线规划！')
+
+
+                })
+
+    }
+
+        //处理从后端传到前端的查询结果，存储在前端sqlresultTab，当表中值改变时触发以下函数并加载到地图中
+    function show_sqlresultAspoint(){
+            parent.FunctionC.PointF(sqlresult);
+    }
+
+    var count1=1
+    function choose_jiuyuanPoint(){
+            var callback = function (p){
+            document.getElementById("jiuyuanPos").value = p;
+
+        };
+        if (count1%2==1){
+            parent.FunctionC.choose_jiuyuanPoint(count1, callback)
+
+        }
+        else {
+            parent.FunctionC.choose_jiuyuanPoint(count1, callback)
+
+        }
+        count1 += 1;
+
+    }
+
+    var count=1
+    function drawRec(){
+        var callback = function (p){
+            document.getElementById("Rec_info").value = p;
+
+        };
+        if(count%2==1){
+            parent.FunctionC.draw(count, callback)
+        } else {
+            parent.FunctionC.draw(count, callback)
+        }
+        count += 1
+    }
+
+        //救援路径绘制
+    function run(){
+       var callback = function (p){
+        };
+        var num = findRoadresult.company_num;
+        var lon =findRoadresult.company_lon;
+        var lat = findRoadresult.company_lat;
+        var end_company = findRoadresult.end_company_lon_lat
+        var shipments=findRoadresult.shipments
+        parent.FunctionC.draw_road(num,lon,lat,end_company,shipments,callback)
+
+    }
+    function clearall(){
+        parent.FunctionC.clearall()
+    }
+
+</script>
+</html>

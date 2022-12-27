@@ -1,0 +1,18 @@
+.table>thead>tr>th{background-color: #d9edf7;color: #333}
+.pull-left{display: none}
+#table tbody tr:nth-child(2n){background-color: #edeff3 !important;}
+#table td{border: 1px #b9bfd1 solid;padding: 6px 8px !important;}
+.clear{clear: both}
+.system{display: flex}
+.system-left{flex: 0 0 300px;background-color:#3078c4;height: 100%;overflow: auto}
+.system-right{flex: 1;padding:  0 10px;background-color: #e4e8ea}
+.system-search{background-color:#3078c4;padding-bottom: 28px;margin-bottom: 10px}
+.search-item{float:left;width: 30%;height: 30px;line-height: 30px;display: flex;margin-top: 28px;padding: 0 0 0 3.3%}
+.search-item label{flex: 0 0 100px;text-align: center;color: #fff}
+.search-item input,.search-item select{flex: 1;margin: 0 10% 0 2px;border: 1px #5489ef solid}
+.search-item button{flex: 0 0 80%;height: 30px;line-height: 30px;border: 1px #cde5fb solid;background-color: #4d8faa}
+.system-content{border: 1px #d1d6da;background-color: #fff}
+.search-btn{padding: 10px 0 6px 4px}
+.search-btn button{padding: 0 8px;line-height: 26px;color: #fff;background-color: #2aa9eb;border: none;border-radius: 4px}
+.search-btn button:nth-child(2n){background-color: #2f74ea}
+.search-btn button span{display: inline-block;margin-top: 4px}

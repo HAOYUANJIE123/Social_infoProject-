@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>灾害事故案例库</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/comprehensive.css">
+    <link rel="stylesheet" href="css/table.css">
+    <style type="text/css">
+          /*表格样式*/
+
+              .main {
+              min-width: 1800px;
+              min-height: 1000px;
+              position: relative;
+              text-align: center;
+              background-color: #ecf0f3;
+              box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+              border-radius: 12px;
+              overflow: hidden;
+              margin: 0 auto;
+            }
+              .form__input {
+              width: 350px;
+              height: 40px;
+              margin: 4px 0;
+              padding-left: 25px;
+              font-size: 13px;
+              letter-spacing: .15px;
+              border: none;
+              outline: none;
+              font-family: 'Montserrat', sans-serif;
+              background-color: #ecf0f3;
+              transition: .25s ease;
+              border-radius: 8px;
+<!--              box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;-->
+            }
+            .button {
+              width: 180px;
+              height: 50px;
+              border-radius: 25px;
+              margin-top: 50px;
+              font-weight: 700;
+              font-size: 14px;
+              letter-spacing: 1.15px;
+              background-color: #4B70E2;
+              color: #f9f9f9;
+              box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+              outline: none;
+            }
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="comprehensive">
+    <div class="comprehensive-query">
+
+
+        <div class="query-item">
+            <div class="query-left">
+
+                <div class="query-item">
+                    <div class="query-left">
+                        <input class="form__input" type="text" placeholder="名称" name="story_name" id="story_name"
+                               style="width: 315px; height: 40px;">
+                    </div>
+                    <div class="query-right">
+
+                        <select class="form__input" id="condition_province" name="condition_province"
+                                style="width: 315px; height: 40px;">
+                            <option value="上海市">上海市</option>
+                            <option value="内蒙古自治区">内蒙古自治区</option>
+                            <option value="北京市">北京市</option>
+                            <option value="吉林省">吉林省</option>
+                            <option value="四川省">四川省</option>
+                            <option value="天津市">天津市</option>
+                            <option value="山东省">山东省</option>
+                            <option value="山西省">山西省</option>
+                            <option value="广东省">广东省</option>
+                            <option value="江苏省">江苏省</option>
+                            <option value="江西省">江西省</option>
+                            <option value="河北省">河北省</option>
+                            <option value="河南省">河南省</option>
+                            <option value="浙江省">浙江省</option>
+                            <option value="海南省">海南省</option>
+                            <option value="湖北省">湖北省</option>
+                            <option value="湖南省">湖南省</option>
+                            <option value="甘肃省">甘肃省</option>
+                            <option value="福建省">福建省</option>
+                            <option value="贵州省">贵州省</option>
+                            <option value="辽宁省">辽宁省</option>
+                            <option value="重庆市">重庆市</option>
+                            <option value="陕西省">陕西省</option>
+                            <option value="黑龙江省">黑龙江省</option>
+                            <option value="" selected="selected">事发省份</option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="query-right">
+                <div class="query-item">
+                    <div class="query-left">
+                        <select class="form__input" id="condition_cls" name="condition_cls"
+                                style="width: 315px; height: 40px;">
+                            <option value="交通事故-公路交通事故">交通事故-公路交通事故</option>
+                            <option value="危化品—中毒事故">危化品—中毒事故</option>
+                            <option value="危化品—压缩气体和液化气体事故">危化品—压缩气体和液化气体事故</option>
+                            <option value="危化品—易燃固体事故">危化品—易燃固体事故</option>
+                            <option value="危化品—易燃液体事故">危化品—易燃液体事故</option>
+                            <option value="危化品—氧化剂和有机过氧化物事故">危化品—氧化剂和有机过氧化物事故</option>
+                            <option value="危化品—爆炸品事故">危化品—爆炸品事故</option>
+                            <option value="地下—建筑物倒塌事故">地下—建筑物倒塌事故</option>
+                            <option value="危化品—易燃液体事故">危化品—易燃液体事故</option>
+                            <option value="地面建（构）筑物坍塌事故">地面建（构）筑物坍塌事故</option>
+                            <option value="火灾">火灾</option>
+                            <option value="爆炸">爆炸</option>
+                            <option value="社会救助—井下遇险事件">社会救助—井下遇险事件</option>
+                            <option value="社会救助—电梯遇险事件">社会救助—电梯遇险事件</option>
+                            <option value="" selected="selected">事故类型</option>
+                        </select>
+                    </div>
+                    <div class="query-right">
+                        <select class="form__input" id="condition_degree" name="condition_degree"
+                                style="width: 315px; height: 40px;">
+                            <option value="一般">一般</option>
+                            <option value="较大">较大</option>
+                            <option value="重大">重大</option>
+                            <option value="特别重大">特别重大</option>
+                            <option value="" selected="selected">灾害事故等级</option>
+                        </select>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="query-item">
+            <div class="query-left" style="margin-left:100px;">
+                <button onclick="submit_disasterexample_condition()" style="background-color:#6683b2; width: 300px;">
+                    查询
+                </button>
+            </div>
+            <div class="query-right" style="margin-left:100px;">
+                <button onclick="Clear_exampleTab()" style="background-color:#6683b2; width: 300px;">清空查询</button>
+            </div>
+        </div>
+
+       <div  class="query-item" style="height: 400px;overflow: scroll;">
+            <table id="exampleTab" border=1 class="commonTable" style="border:3px solid #6699CC;">
+            <tr style="background-color:#0099CC; ">
+                <td>序号</td>
+                <td>灾害事故名称</td>
+                <td>事发时间</td>
+                <td>事发省份</td>
+                <td>事故类型</td>
+                <td>主要致灾物质</td>
+                <td>灾害事故等级</td>
+                <td>损失情况</td>
+                <td>主要应急物资</td>
+                <td>操作</td>
+            </tr>
+        </table>
+       </div>
+
+    </div>
+
+
+</div>
+</body>
+<script src="../static/js/jquery-2.2.0.min.js"></script>
+<script src="../static/js/common.js"></script>
+<script src="../static/js/comprehensive.js"></script>
+<script>
+         var inittablehtml=document.getElementById("exampleTab").innerHTML
+        function submit_disasterexample_condition(){
+
+                var obj = document.getElementById('condition_province'); //定位id
+                var index = obj.selectedIndex; // 选中索引
+                var condition_province = obj[index].value; // 选中文本
+                let story_name=document.getElementById("story_name")
+                let condition_cls=document.getElementById("condition_cls")
+                let condition_degree=document.getElementById("condition_degree")
+                $.ajax({
+                    url: "http://127.0.0.1:5000/example_select",
+                    method: "POST",
+                    data: {"condition_province":condition_province,"story_name":story_name.value,"condition_cls":condition_cls.value,"condition_degree":condition_degree.value},
+                }).then(function (res){
+                    var cls1=res.cls1
+                    var cls2=res.cls2
+                    var cls3=res.cls3
+                    var cls6=res.cls6
+                    var cls7=res.cls7
+                    var cls8=res.cls8
+                    var cls9=res.cls9
+                    var cls10=res.cls10
+                    var cls11=res.cls11
+                    var cls12=res.cls12
+
+                    for (var i=0;i<cls1.length;i++){
+                        AddRow2Table(cls1[i],cls2[i],cls3[i],cls6[i],cls7[i],cls8[i],cls9[i],cls10[i],cls11[i],cls12[i])
+                }})
+
+    }
+
+        function AddRow2Table(cls1,cls2,cls3,cls6,cls7,cls8,cls9,cls10,cls11,cls12){
+        var tabObj=document.getElementById("exampleTab");
+        tabObj.innerHTML+='<tr><td style="width: 50px;height: 30px;">'+cls12+
+            '</td><td>'+cls1+'</td><td>'+cls2+'</td><td style="width: 50px;height: 30px;">'+cls3+
+            '</td><td>'+cls6+'</td><td>'+cls7+'</td><td>'+cls8+'</td><td>'+cls9+'</td><td>'+cls10+'</td><td style="width: 50px;height: 30px;" >'
+            +'<a href='+"'"+cls11+"'"+' target="_blank" style="background-color:#009999;font-size:16px;">预览</a>'+'</td></tr>';
+    }
+        function Clear_exampleTab(){
+             document.getElementById("exampleTab").innerHTML=inittablehtml
+
+
+
+        }
+
+
+
+
+
+
+
+
+</script>
+</html>
